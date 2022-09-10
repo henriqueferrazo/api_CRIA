@@ -2,6 +2,8 @@ import  express from 'express'
 import {Router, Request, Response}  from "express";
 // import AdressRouter from './listenServiceOrden/router/Router';
 import DataBaseAddress from './database/DataBaseAddress';
+import  *  as  dotenv  from  'dotenv'
+dotenv.config({debug: true})
 
 const port = process.env.PORT || 3000
 
