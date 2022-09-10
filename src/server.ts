@@ -1,13 +1,16 @@
 import  express from 'express'
 import {Router, Request, Response}  from "express";
-import AdressRouter from './listenServiceOrden/router/Router';
+// import AdressRouter from './listenServiceOrden/router/Router';
+import DataBaseAddress from './database/DataBaseAddress';
 
+const port = process.env.PORT || 3000
 
 const app = express();
 const route = Router();
+const dataBase = new DataBaseAddress()
 
+dataBase.connectToDataBase()
 app.use(express.json())
-app.use('address/', AdressRouter)
 
 route.get('/', (req:Request, res:Response) =>{
     res.json("olá mundo");
