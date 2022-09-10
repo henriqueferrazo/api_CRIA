@@ -1,25 +1,18 @@
 import { Document, Schema, model } from "mongoose";
-import { AddressInterface } from "./AddressEnd";
+import { AddressInterface } from "./Address";
+import Util from "../../Util/Util";
 
+const util = new Util()
 export interface AddressModelInterface extends AddressInterface, Document {
-    
+
 }
 
 export const AddressSchema = new Schema({
-    serviceId:{
-        type: String,
-        requered: true,
-    },
-    zipCode:{
-        type: String,
-        required: true,
-    },
-    latitude:{
-        type: Number,
-        required: true
-    },
-    longitude:{
-        type: Number,
-        required: true
-    }
-})
+    serviceId: String,
+    zipCode: String,
+    latitude: Number,
+    longitude: Number,
+});
+
+
+

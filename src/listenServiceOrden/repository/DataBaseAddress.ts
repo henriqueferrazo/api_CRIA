@@ -1,7 +1,5 @@
 import mongoose from 'mongoose';
-import AddressEnd from '../model/AddressEnd';
 
-const addressEnd = new AddressEnd()
 export default class DataBaseAddress {
 
     async connectToDataBase() {
@@ -14,10 +12,4 @@ export default class DataBaseAddress {
         }
     }
 
-    main() {
-        const AddressEndSchema = new mongoose.Schema(addressEnd)
-        const addressEndCria = mongoose.model('AddressEnd', AddressEndSchema)
-
-        AddressEndSchema.path('_id')
-    }
 }

@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export interface Address {
+export interface AddressInterface {
      serviceId: string
      zipCode: string;
      latitude: 0;
