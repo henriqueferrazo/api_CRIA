@@ -2,14 +2,23 @@
 
 export default class AddressEnd {
 
-    private _id?: number
+    private _serviceId?: number
 
-    private _zipCode?: string;
+    private _zipCode?: string | undefined;
 
-    public get id(): number | undefined {
-        return this._id;
+    
+    
+    public getzipCode(): string | undefined {
+        return this._zipCode;
     }
-    public set id(value: number | undefined) {
-        this._id = value;
+    public setzipCode(value: string | undefined) {
+        this._zipCode = value;
+    }
+
+    public get serviceId(): number | undefined {
+        return this._serviceId;
+    }
+    public set serviceId(value: number | undefined) {
+        this._serviceId = value;
     }
 }

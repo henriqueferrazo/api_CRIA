@@ -4,7 +4,7 @@ import AdressControler from "../controller/AddressController";
 const router = Router()
 const addressController = new AdressControler()
 
-router.post('/serrviceOrder', addressController.ListenServiceOrden)
+router.post('/serviceOrder', addressController.ListenServiceOrden)
  
 
 export default router;
