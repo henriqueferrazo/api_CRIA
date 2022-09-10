@@ -1,0 +1,54 @@
+{
+    "serviceId": "string",
+    "serviceDate": "string",
+    "type": "DELIVERY",
+    "typeLabel": "string",
+    "deadline": "string",
+    "lotId": "string",
+    "lotDate": "string",
+    "pickupPoint": "string",
+    "pickupPointName": "string",
+    "destinationPoint": {
+    "contactName": "string",
+    "address": "string",
+    "number": "string",
+    "neighborhood": "string",
+    "complement": "string",
+    "reference": "string",
+    "city": "string",
+    "state": "string",
+    "zipCode": "string",
+    "latitude": 0,
+    "longitude": 0
+    },
+    "status": "OPEN",
+    "statusLabel": "string",
+    "lastDeliveryReason": "DELIVERED",
+    "customer": {
+    "email": "string",
+    "mainPhone": {},
+    "secondaryPhone": {},
+    "individualCustomer": {},
+    "corporateCustomer": {}
+    },
+    "partnerInfo": {
+    "saleChannel": "string",
+    "shippingCosts": 0,
+    "integrationServiceId": "string",
+    "shipmentOrderType": "string",
+    "orderDate": "string",
+    "shippedDate": "string"
+    },
+    "transportFileInfo": {
+    "transportFileId": "string",
+    "transportFileLicensePlate": "string",
+    "sequence": 0,
+    "transportFileDate": "string",
+    "initialTimeWindow": "string",
+    "finalTimeWindow": "string"
+    },
+    "packages": [
+    {}
+    ],
+    "routeId": 0
+    }
