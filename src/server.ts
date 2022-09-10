@@ -15,9 +15,6 @@ dataBase.connectToDataBase()
 app.use(express.json())
 app.use('/address',AddressRouter)
 
-app.get('/', (req:Request, res:Response) =>{
-    res.json("olá mundo");
-})
 
 
 app.listen(port, () => {
