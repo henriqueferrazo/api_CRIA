@@ -11,5 +11,4 @@ export default class DataBaseAddress {
             console.log("erro exception:", err)
         }
     }
-
 }

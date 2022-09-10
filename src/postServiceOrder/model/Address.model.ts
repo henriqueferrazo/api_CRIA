@@ -14,5 +14,5 @@ export const AddressSchema = new Schema({
     longitude: Number,
 });
 
-
+export const AddressModel = model("AddressModel", AddressSchema)
 
