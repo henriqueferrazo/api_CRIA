@@ -5,10 +5,11 @@ export default class Util {
         return splitZipCode;
     }
 
-    checkZipCode(finalNumber:string):void {
-        const number = this.finalNumber(finalNumber)
-        if(number >= '366'){
-            
+    checkZipCode(finalNumber:string):string {
+        const numberEnd:string = this.finalNumber(finalNumber)
+        if(numberEnd >= '366'){
+            return numberEnd;
         }
+        return ""
     }
 } 
