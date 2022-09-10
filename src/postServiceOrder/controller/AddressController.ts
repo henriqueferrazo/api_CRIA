@@ -7,8 +7,8 @@ export default class AdressControler {
     ListenServiceOrden(req:Request, res:Response){
         try{
             const addressConfig = new AddressConfig()
-            const {serviceId, destinationPoint:{zipCode}} = req.body
-            const filterData = {serviceId , zipCode}
+            const {serviceId,  latitude, longitude, destinationPoint:{zipCode}} = req.body
+            const filterData = {serviceId ,  latitude, longitude,zipCode,}
             addressConfig.saveOrNotWorkOrder(filterData)
             res.status(201).send(filterData)
 
