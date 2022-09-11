@@ -1,6 +1,6 @@
 import {Request, Response}  from "express"
-import AddressConfig from "../config/AddressConfig"
-import { Address } from "../model/Address.model"
+import runEmail from "../../emailTrigger/sendEmail"
+import AddressConfig from "../config/Address.config"
 
 export default class AdressControler {
     
@@ -13,12 +13,10 @@ export default class AdressControler {
             console.log("body:", filterData)
             const check = addressConfig.checkSaveServiceOrder(filterData)
             if(check === true){
-                const address = new Address(filterData)
-                const save = await address.save()
-                console.log("save:",save)
-                res.status(201).send(save);
+                await addressConfig.saveDataAddress(filterData)
+                res.status(201).send(filterData);
             }else{
-                res.status(201).json({filterData: filterData ,message:"Endereco não pertence a area CRIA"})
+                res.status(200).json({filterData: filterData ,message:"Endereco não pertence a area CRIA"})
             }
         }catch(err){
             return res.status(404).json({status:404 ,smessage:"erro ao criar endereco", err})
