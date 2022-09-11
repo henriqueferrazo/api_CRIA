@@ -4,17 +4,14 @@ import { AddressModel, AddressSchema } from "../model/Address.model";
 
 export default class AddressConfig {
 
-    saveOrNotWorkOrder(body:object) {
+    checkSaveServiceOrder(body:object): boolean {
         const valuesObjects = Object.values(body)
         const zipCode = this.validateZipCode(valuesObjects[valuesObjects.length - 1])
-        const check = this.checkZipCode(zipCode)
-
+        const check = this.checkZipCode(zipCode);
         if(check === true){
-            const address = new AddressModel()
-            address.save()
-            .then((result) => console.log("salvo com sucesso", result))
-            .catch((err) => console.log("erro ao salvar dado no banco", err))
+            return true
         }
+        return false;
     }
 
     validateZipCode(zipCode:string){
@@ -23,7 +20,7 @@ export default class AddressConfig {
     }
 
     checkZipCode(finalNumber:string):boolean {
-        if(finalNumber === '267'){
+        if(finalNumber === '330'){
             return true
         }
             return false
