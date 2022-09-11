@@ -19,4 +19,4 @@ export const AddressSchema = new Schema({
 export interface AddressModel extends Address, Document {}
 // export const AddressModel = model("AddressModel", AddressSchema)
 
-// export const Address:Model<AddressModel> = mongoose.model('Address', AddressSchema)
+export const Address:Model<AddressModel> = mongoose.model('Address', AddressSchema)

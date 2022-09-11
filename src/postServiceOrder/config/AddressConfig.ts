@@ -6,7 +6,7 @@ export default class AddressConfig {
 
     checkSaveServiceOrder(body:object): boolean {
         const valuesObjects = Object.values(body)
-        const zipCode = this.validateZipCode(valuesObjects[valuesObjects.length - 1])
+        const zipCode = this.validateZipCode(valuesObjects[1])
         const check = this.checkZipCode(zipCode);
         if(check === true){
             return true
