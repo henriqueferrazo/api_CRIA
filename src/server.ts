@@ -11,7 +11,7 @@ const dataBase = new DataBaseAddress()
 
 dataBase.connectToDataBase()
 app.use(express.json())
-app.use('/address',AddressRouter)
+app.use('/cria',AddressRouter)
 
 app.listen(port, () => {
     console.log(`Servidor rodando na porta http://localhost:${port}`)
