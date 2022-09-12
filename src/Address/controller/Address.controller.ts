@@ -20,7 +20,8 @@ export default class AdressControler {
                 res.status(200).json({ filterData: filterData, message: "Address not CRIA" })
             }
         } catch (err) {
-            return res.status(404).json({ status: 404, smessage: "registration failed", err })
+            return res.status(404).json({ error: "registration failed"})
+            console.log("err post", err)
         }
     }
 
@@ -28,23 +29,49 @@ export default class AdressControler {
     public async findById(req: Request, res: Response) {
         try {
             const getDataBase = await Address.findById(req.params.id)
-            if(getDataBase){
-                res.status(200).send(getDataBase)    
+            if (getDataBase) {
+                res.status(200).send(getDataBase)
                 console.log("body:", getDataBase)
             }
         } catch (err) {
-            res.status(404).send({ message: "Address not found", error: err })
+            res.status(404).json({ error: "Address not found"})
+            console.log("err updade", err)
         }
     }
 
-    public async listAddress(req: Request, res: Response){
-        try{
+    public async listAddress(req: Request, res: Response) {
+        try {
             const address = await Address.find()
-            if(address){
+            if (address) {
                 res.status(200).send(address)
             }
-        }catch(err){
-            res.status(400).send({message:"Address not found", error: err});
+        } catch (err) {
+            res.status(400).json({ error: "Address not found"});
+            console.log("err list address", err)
         }
+    }
+
+    public async updateAdress(req: Request, res: Response) {
+        try {const { id } = req.params
+        const { latitude, longitude } = req.body
+
+        const update = await Address.findByIdAndUpdate(
+            { _id: id },
+            {
+                $set: {
+                    latitude,
+                    longitude
+                },
+            },
+            {
+                new: true,
+                omitUndefined: true
+            }
+        );
+        return res.status(200).send(update)
+    }catch(err){
+        res.status(400).json({error:"error for updating a geolocation"})
+        console.log("err updade", err)
+    }
     }
 }

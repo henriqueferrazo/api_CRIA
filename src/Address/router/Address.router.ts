@@ -10,4 +10,6 @@ router.get('/:id', addressController.findById)
 
 router.get('/', addressController.listAddress)
 
+router.put('/newLocal/:id', addressController.updateAdress)
+
 export default router;
