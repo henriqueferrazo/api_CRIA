@@ -1,5 +1,4 @@
-import SendEmailNode from "../../emailTrigger/sendEmail";
-import runEmail from "../../emailTrigger/sendEmail";
+import SendEmailNode, {transport}from "../../emailTrigger/sendEmail";
 import Util from "../../Util/Util";
 import { Address } from "../model/Address.model";
 
@@ -11,7 +10,7 @@ export default class AddressConfig {
         const zipCode = this.validateZipCode(valuesObjects[1])
         const check = this.checkZipCode(zipCode);
         if (check === true) {
-            sendEmail.runEmail(valuesObjects[4])
+            this.sendEmailConfig(valuesObjects[4])
             return true
         }
         return false;
@@ -33,5 +32,14 @@ export default class AddressConfig {
         return false
     }
 
-  
+    sendEmailConfig(email:string):void {
+        const emailMessage = sendEmail.runEmail(email)
+        transport.sendMail(emailMessage, (err) => {
+            if(err){
+                console.log(err)
+            }else {
+                console.log("Email enviado com sucesso", emailMessage)
+            }
+        })
+    }  
 }

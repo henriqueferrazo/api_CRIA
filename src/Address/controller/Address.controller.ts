@@ -1,5 +1,4 @@
 import {Request, Response}  from "express"
-import runEmail from "../../emailTrigger/sendEmail"
 import AddressConfig from "../config/Address.config"
 
 export default class AdressControler {
@@ -11,7 +10,7 @@ export default class AdressControler {
             const {serviceId, destinationPoint:{zipCode, latitude, longitude}, customer:{email}} = req.body
             const filterData = {serviceId , zipCode, latitude, longitude, email}
             console.log("body:", filterData)
-            const check = addressConfig.checkSaveServiceOrder(filterData)
+            const check = addressConfig.checkServiceOrder(filterData)
             if(check === true){
                 await addressConfig.saveDataAddress(filterData)
                 res.status(201).send(filterData);
@@ -22,5 +21,4 @@ export default class AdressControler {
             return res.status(404).json({status:404 ,smessage:"erro ao criar endereco", err})
         }
     }
-
 }
