@@ -37,10 +37,12 @@ export default class AdressControler {
         }
     }
 
-    public listAddress(req: Request, res: Response){
+    public async listAddress(req: Request, res: Response){
         try{
-            const address = Address.find()
-            res.status(200).send(address)
+            const address = await Address.find()
+            if(address){
+                res.status(200).send(address)
+            }
         }catch(err){
             res.status(400).send({message:"Address not found", error: err});
         }
