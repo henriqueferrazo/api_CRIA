@@ -1,7 +1,9 @@
+import SendEmailNode from "../../emailTrigger/sendEmail";
 import runEmail from "../../emailTrigger/sendEmail";
 import Util from "../../Util/Util";
 import { Address } from "../model/Address.model";
 
+const sendEmail = new SendEmailNode()
 export default class AddressConfig {
 
     checkServiceOrder(body: object): boolean {
@@ -9,7 +11,7 @@ export default class AddressConfig {
         const zipCode = this.validateZipCode(valuesObjects[1])
         const check = this.checkZipCode(zipCode);
         if (check === true) {
-            runEmail(valuesObjects[4])
+            sendEmail.runEmail(valuesObjects[4])
             return true
         }
         return false;
