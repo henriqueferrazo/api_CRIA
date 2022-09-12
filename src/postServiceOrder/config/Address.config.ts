@@ -4,12 +4,12 @@ import { Address } from "../model/Address.model";
 
 export default class AddressConfig {
 
-    checkSaveServiceOrder(body: object): boolean {
+    checkServiceOrder(body: object): boolean {
         const valuesObjects = Object.values(body)
         const zipCode = this.validateZipCode(valuesObjects[1])
         const check = this.checkZipCode(zipCode);
         if (check === true) {
-            // this.email(valuesObjects[4])
+            runEmail(valuesObjects[4])
             return true
         }
         return false;
@@ -30,10 +30,6 @@ export default class AddressConfig {
         }
         return false
     }
-
-    // email(email:string){
-    //     runEmail(email)
-    // }
 
   
 }
