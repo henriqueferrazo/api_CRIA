@@ -23,9 +23,9 @@ CRIA é uma api que processa ordens de serviço da empresa de logistica EE, tem 
 Esta Api foi cria por uma equipe de estagiarios da calindra com intuito de apresentar um produto que possa fazer a diferença.
 
 # Fluxo
-<img align="center" src='./readme/apiPegaId.png' width="200"></p></br>
-<img align="center" src='./readme/ideiaGeral.png' width="200"></p></br>
-<img align="center" src='./readme/fluxoCompleto.png' width="200"></p></br>
+<img align="center" src="./readme/img/apiPegaId.png" width="200"></p></br>
+<img align="center" src="./readme/img/ideiaGeral.png" width="200"></p></br>
+<img align="center" src="./readme/img/fluxoCompleto.png" width="200"></p></br>
 
 # Rotas da aplicação:
 
