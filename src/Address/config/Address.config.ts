@@ -44,8 +44,27 @@ export default class AddressConfig {
     }  
 
     public queryBody(req:Request, res:Response){
-        const { serviceId, destinationPoint: { zipCode, latitude, longitude }, customer: { email } } = req.body
+        const { serviceId, destinationPoint: { zipCode, latitude, longitude }, customer:{ email } } = req.body
         const filterData = { serviceId, zipCode, latitude, longitude, email }
         return filterData;
+    }
+
+    public async updateLatLong(req:Request, res:Response){
+        const { id } = req.params
+        const { latitude, longitude } = req.body
+
+        const update = await Address.findByIdAndUpdate(
+            { _id: id },
+            {
+                $set: {
+                    latitude,
+                    longitude
+                },
+            },
+            {
+                new: true,
+                omitUndefined: true
+            }
+        );
     }
 }

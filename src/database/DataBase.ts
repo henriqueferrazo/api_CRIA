@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-export default class DataBaseAddress {
+export default class DataBase {
 
     async connectToDataBase() {
         const dataBase:any = process.env.DATABASE_URL

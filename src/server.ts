@@ -1,13 +1,13 @@
 import  express from 'express'
 import  *  as  dotenv  from  'dotenv'
-import DataBaseAddress from './Address/repository/DataBase.address';
+import DataBase from './database/DataBase';
 import AddressRouter from './Address/router/Address.router';
 
 
 dotenv.config({debug: true})
 const port = process.env.PORT
 const app = express();
-const dataBase = new DataBaseAddress()
+const dataBase = new DataBase()
 
 dataBase.connectToDataBase()
 app.use(express.json())
