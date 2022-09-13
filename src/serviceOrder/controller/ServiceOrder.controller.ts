@@ -1,16 +1,16 @@
 import { Request, Response } from "express";
-import ServiceOrdenConfig from "../config/ServidorOrden.conf";
-import { ServiceOrden } from "../model/servicdOrden.model";
+import ServiceOrderConfig from "../config/ServidorOrder.confg";
+
+const serviceOrdenConfig = new ServiceOrderConfig()
 
 export default class ServiceOrdenController {
     
-    serviceOrdenConfig = new ServiceOrdenConfig()
 
     public async idServiceOrden(req:Request, res: Response){
         try{
-           const body = await this.serviceOrdenConfig.queryId(req,res)
-           const save = await ServiceOrden.create(body)
-           return res.status(201).send(save)
+           const body = await serviceOrdenConfig.queryId(req,res)
+           await serviceOrdenConfig.saveId(body)
+           return res.status(201).send(body)
         }catch(err){
             console.log("error create failed:", err)
             return res.status(400).json({error: "create failed"})

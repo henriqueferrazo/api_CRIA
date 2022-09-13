@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import SendEmailNode, {transport}from "../../emailTrigger/sendEmail";
+import SendEmailNode, { transport } from "../../emailTrigger/sendEmail";
 import Util from "../../Util/Util";
 import { Address } from "../model/Address.model";
 
 export default class AddressConfig {
-    
+
     sendEmailNode = new SendEmailNode()
-    
+
     public checkServiceOrder(body: object): boolean {
         const valuesObjects = Object.values(body)
         const zipCode = this.validateZipCode(valuesObjects[1])
@@ -16,7 +16,7 @@ export default class AddressConfig {
         }
         return false;
     }
-    public async saveAddress(body:object) {
+    public async saveAddress(body: object) {
         const address = await new Address(body)
         address.save()
     }
@@ -33,24 +33,34 @@ export default class AddressConfig {
         return false
     }
 
-    public sendEmail(email:string):void {
+    public sendEmail(email: string): void {
         const emailMessage = this.sendEmailNode.runEmail(email)
         transport.sendMail(emailMessage, (err) => {
-            if(err){
+            if (err) {
                 console.log(err)
-            }else {
+            } else {
                 console.log("Email enviado com sucesso", emailMessage)
             }
         })
-    }  
+    }
 
-    public queryBody(req:Request, res:Response){
-        const { serviceId, destinationPoint: { zipCode, latitude, longitude }, customer:{ email } } = req.body
+    public queryBody(req: Request, res: Response) {
+        const { 
+            serviceId,
+            destinationPoint: {   
+                zipCode,
+                latitude,
+                longitude
+            },
+            customer: {
+                email
+            }
+        } = req.body
         const filterData = { serviceId, zipCode, latitude, longitude, email }
         return filterData;
     }
 
-    public async updateLatLong(req:Request, res:Response){
+    public async updateLatLong(req: Request, res: Response) {
         const { id } = req.params
         const { latitude, longitude } = req.body
 

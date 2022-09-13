@@ -1,8 +1,8 @@
-import router from "./Address.router";
-import ServiceOrdenController from "../serviceOrden/controller/ServiceOrden.controller";
+import { Router } from "express";
+import ServiceOrdenController from "../serviceOrder/controller/ServiceOrder.controller"
 
 const serviceOrdenController = new ServiceOrdenController()
-
+const router = Router()
 
 router.post('/serviceOrder', serviceOrdenController.idServiceOrden)
 
