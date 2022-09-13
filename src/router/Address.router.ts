@@ -1,15 +1,15 @@
 import { Router } from "express";
-import AdressControler from "../controller/Address.controller";
+import AdressControler from "../Address/controller/Address.controller";
 
 const router = Router()
 const addressController = new AdressControler()
 
-router.post('/serviceOrder', addressController.createServiceOrden)
+router.post('/address', addressController.createServiceOrden)
 
 router.get('/:id', addressController.findById)
 
 router.get('/', addressController.listAddress)
 
-router.put('/newLocal/:id', addressController.updateAdress)
+router.put('/newAddress/:id', addressController.updateAdress)
 
 export default router;

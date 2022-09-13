@@ -1,7 +1,7 @@
 import  express from 'express'
 import  *  as  dotenv  from  'dotenv'
 import DataBase from './database/DataBase';
-import AddressRouter from './Address/router/Address.router';
+import AddressRouter from './router/Address.router';
 
 
 dotenv.config({debug: true})

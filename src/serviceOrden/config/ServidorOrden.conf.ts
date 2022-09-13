@@ -8,4 +8,8 @@ export default class ServiceOrdenConfig {
         const query = internalId
         return query
     }
+
+    public shootId(){
+        
+    }
 }
