@@ -1,5 +1,5 @@
 import {Schema, Document} from "mongoose";
-import { ServiceOrderInterface } from "../model/servicdOrden.model";
+import { ServiceOrdenInterface } from "../model/servicdOrden.model";
 
 export const ServiceOrdenSchema = new Schema({
     serviceId: {type: String, required: true},
@@ -9,4 +9,4 @@ export const ServiceOrdenSchema = new Schema({
     email: {type: String, required: true}
 });
 
-export interface serviceOrdenModel extends ServiceOrderInterface, Document {}
+export interface serviceOrdenModel extends ServiceOrdenInterface, Document {}

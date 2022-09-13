@@ -14,7 +14,7 @@ export default class AdressControler {
             const check = this.addressConfig.checkServiceOrder(filterData)
             if (check === true) {
                 await this.addressConfig.saveAddress(filterData)
-                this.addressConfig.sendEmail(filterData.email)
+                this.addressConfig.sendEmailNode(filterData.email)
                 return res.status(201).send(filterData);
             } else {
                return res.status(200).json({ filterData: filterData, message: "Address not CRIA" })

@@ -3,9 +3,10 @@ import SendEmailNode, {transport}from "../../emailTrigger/sendEmail";
 import Util from "../../Util/Util";
 import { Address } from "../model/Address.model";
 
-const sendEmail = new SendEmailNode()
 export default class AddressConfig {
-
+    
+    sendEmailNode = new SendEmailNode()
+    
     public checkServiceOrder(body: object): boolean {
         const valuesObjects = Object.values(body)
         const zipCode = this.validateZipCode(valuesObjects[1])
@@ -33,7 +34,7 @@ export default class AddressConfig {
     }
 
     public sendEmail(email:string):void {
-        const emailMessage = sendEmail.runEmail(email)
+        const emailMessage = this.sendEmailNode.runEmail(email)
         transport.sendMail(emailMessage, (err) => {
             if(err){
                 console.log(err)
