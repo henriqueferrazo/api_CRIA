@@ -8,20 +8,18 @@ export default class AdressControler {
     //Post
     public async createServiceOrden(req: Request, res: Response) {
         try {
-            const { serviceId, destinationPoint: { zipCode, latitude, longitude }, customer: { email } } = req.body
-            const filterData = { serviceId, zipCode, latitude, longitude, email }
-            console.log("body:", filterData)
+            const filterData = addressConfig.queryBody(req, res);
             const check = addressConfig.checkServiceOrder(filterData)
             if (check === true) {
-                await addressConfig.saveDataAddress(filterData)
-                console.log("filter:", filterData)
+                await addressConfig.saveAddress(filterData)
+                addressConfig.sendEmail(filterData.email)
                 res.status(201).send(filterData);
             } else {
                 res.status(200).json({ filterData: filterData, message: "Address not CRIA" })
             }
         } catch (err) {
-            return res.status(404).json({ error: "registration failed"})
-            console.log("err post", err)
+            res.status(404).json({ error: "registration failed"})
+            console.log("error: registration failed:", err)
         }
     }
 
@@ -39,6 +37,7 @@ export default class AdressControler {
         }
     }
 
+    //get list
     public async listAddress(req: Request, res: Response) {
         try {
             const address = await Address.find()
@@ -51,6 +50,7 @@ export default class AdressControler {
         }
     }
 
+    //put longitude e latitude
     public async updateAdress(req: Request, res: Response) {
         try {const { id } = req.params
         const { latitude, longitude } = req.body
