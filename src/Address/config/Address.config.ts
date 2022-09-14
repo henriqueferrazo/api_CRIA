@@ -56,6 +56,7 @@ export default class AddressConfig {
                 email
             }
         } = req.body
+        
         const filterData = { serviceId, zipCode, latitude, longitude, email }
         return filterData;
     }

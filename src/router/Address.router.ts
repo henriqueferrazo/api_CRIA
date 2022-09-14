@@ -4,7 +4,7 @@ import AdressControler from "../Address/controller/Address.controller";
 const router = Router()
 const addressController = new AdressControler()
 
-router.post('/address', addressController.createServiceOrden)
+router.post('/address', addressController.createAddress)
 
 router.get('/:id', addressController.findById)
 

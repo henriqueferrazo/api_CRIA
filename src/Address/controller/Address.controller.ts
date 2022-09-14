@@ -8,14 +8,14 @@ export default class AdressControler {
 
 
     //Post
-    public async createServiceOrden(req: Request, res: Response) {
+    public async createAddress(req: Request, res: Response) {
         try {
             const filterData = addressConfig.queryBody(req, res);
             const check = addressConfig.checkServiceOrder(filterData)
             if (check === true) {
                 await addressConfig.saveAddress(filterData)
                 addressConfig.sendEmail(filterData.email)
-                return res.status(201).send(filterData);
+                return res.status(201).send(filterData)
             } else {
                return res.status(200).json({ filterData: filterData, message: "Address not CRIA" })
             }
