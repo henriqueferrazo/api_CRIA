@@ -1,13 +1,18 @@
 import { Request, Response } from "express";
+import DataBase from "../../database/DataBase";
 import { ServiceOrder } from "../model/servicdOrder.model";
 
 
 export default class ServiceOrderConfig {
 
     public async queryId(req:Request, res: Response){
-        const { internalId } = req.body
-        const query = {internalId}
+        const { internalId, date } = req.body
+        const query = {internalId, date}
         return query
+    }
+
+    private async updateDate(date:Date){
+        await ServiceOrder.updateOne()
     }
 
     public async saveId(body:object) {
@@ -15,8 +20,9 @@ export default class ServiceOrderConfig {
         serviceOrder.save()
     }
 
-    public fetchWorkOrderEE(){
+    // public fetchWorkOrderEE(){
 
-    }
+    // }
+
 
 }

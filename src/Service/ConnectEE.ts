@@ -9,7 +9,6 @@ export default class ConectEE {
                 'Authorization': `${TOKEN}`
               }
         })
-        console.log("response:", response)
-        return response.data
+        response.data
     }
 }

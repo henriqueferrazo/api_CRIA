@@ -11,8 +11,7 @@ export default class ServiceOrdenController {
         try{
            const body = await serviceOrdenConfig.queryId(req,res)
            await serviceOrdenConfig.saveId(body)
-           const dados = await connectEE.queryServiceOrder(body.internalId)
-            console.log("dados:", dados)
+           await connectEE.queryServiceOrder(body.internalId)
            return res.status(201).send(body)
         }catch(err){
             console.log("error create failed:", err)
