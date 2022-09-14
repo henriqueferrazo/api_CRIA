@@ -3,9 +3,9 @@ import SendEmailNode, { transport } from "../../emailTrigger/sendEmail";
 import Util from "../../Util/Util";
 import { Address } from "../model/Address.model";
 
+const sendEmailNode = new SendEmailNode()
 export default class AddressConfig {
 
-    sendEmailNode = new SendEmailNode()
 
     public checkServiceOrder(body: object): boolean {
         const valuesObjects = Object.values(body)
@@ -34,7 +34,7 @@ export default class AddressConfig {
     }
 
     public sendEmail(email: string): void {
-        const emailMessage = this.sendEmailNode.runEmail(email)
+        const emailMessage = sendEmailNode.runEmail(email)
         transport.sendMail(emailMessage, (err) => {
             if (err) {
                 console.log(err)
@@ -45,19 +45,10 @@ export default class AddressConfig {
     }
 
     public queryBody(req: Request, res: Response) {
-        const { 
-            serviceId,
-            destinationPoint: {   
-                zipCode,
-                latitude,
-                longitude
-            },
-            customer: {
-                email
-            }
-        } = req.body
-        
+        console.log("body:", req.body)
+        const { serviceId, destinationPoint: { zipCode, latitude, longitude, customer: {email}}} = req.body
         const filterData = { serviceId, zipCode, latitude, longitude, email }
+        console.log("dados query:", filterData)
         return filterData;
     }
 

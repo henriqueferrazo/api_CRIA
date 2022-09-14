@@ -11,6 +11,7 @@ export default class ServiceOrdenController {
         try{
            const body = await serviceOrdenConfig.queryIdAndDate(req,res)
            await serviceOrdenConfig.saveId(body)
+           console.log(body.internalId)
            await connectEE.queryServiceOrder(body.internalId)
            return res.status(201).send(body)
         }catch(err){

@@ -23,13 +23,19 @@ CRIA é uma api que processa ordens de serviço da empresa de logistica EE, tem 
 Esta Api foi cria por uma equipe de estagiarios da calindra com intuito de apresentar um produto que possa fazer a diferença.
 
 # Fluxo
-<img align="center" src="./readme/img/apiPegaId.png"></p></br>
+
+### Essa imagem representa a ideia geral do projeto
 <img align="center" src="./readme/img/ideiaGeral.png"></p></br>
+
+### Nessa fase a api esta ouvindo as ordens de serviço sendo criadas mas ainda não tem acesso aos dados do cliente final, assim primeiro ela recebe o id da ordem de serviço e em seguida ela da um get nessa ordem buscando todos os dados da mesma e envia para sua rota 'cria/address'.</br>
+<img align="center" src="./readme/img/apiPegaId.png"></p></br>
+
+### Nessa fase a api faz o processo de filtragem dos dados, ela busca saber se a geolocalização ou o cep pertence a uma area cadastrada como area Cria, caso ela seja confirmada será salva e enviado um email ao cliente que conterá o link de mudança da sua geolocalização. Esse mapa deverá fazer um get nessa localização e após a mudança um put para atualizar sua geolocalização.
 <img align="center" src="./readme/img/fluxoCompleto.png"></p></br>
 
 # Rotas da aplicação:
 
-## Franquias
+## Address e Ordem de serviço
 
 <b>[GET]</b> /cria- A rota deve exibir todos os clientes.<br>
 
