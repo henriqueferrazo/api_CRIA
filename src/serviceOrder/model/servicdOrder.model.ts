@@ -4,7 +4,7 @@ import { serviceOrderModel, ServiceOrderSchema} from "../repository/serviceOrder
 
 export interface ServiceOrderInterface {
     internalId:number,
-    date:string
+    processedAt:Date
 } 
 
 export const ServiceOrder:Model<serviceOrderModel> = mongoose.model('ServiceOrden', ServiceOrderSchema)

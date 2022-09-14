@@ -6,26 +6,11 @@ import { ServiceOrder } from "../model/servicdOrder.model";
 
 export default class ServiceOrderConfig {
 
-    public async queryId(req:Request, res: Response){
-        const { internalId, date } = req.body
-        const query = {internalId, date}
+    public async queryIdAndDate(req:Request, res: Response){
+        const { internalId, processedAt } = req.body
+        const query = {internalId, processedAt}
         console.log("query:", query)
-        const dado = await this.updateDate(req,res)
-        console.log("dado:",dado)
         return query
-    }
-
-    public async updateDate(req:Request, res: Response){
-        const {internalId} = req.params
-        const util = new Util()
-        await ServiceOrder.findOneAndUpdate(
-            {internalId:internalId},
-            {
-                $set:{
-                    date: util.dateDay()
-                }
-            }
-        )
     }
 
     public async saveId(body:object) {

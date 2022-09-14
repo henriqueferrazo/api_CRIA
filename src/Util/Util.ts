@@ -8,11 +8,6 @@ export default class Util {
     
     public dateDay(){
         const date = new Date()
-        const reframe = {
-            year: date.getFullYear(),
-            month: date.getMonth(),
-            day: date.getDate()
-        }
-        return `${reframe.day}-${reframe.month}-${reframe.year}`;
+        return date;
     }
 } 
