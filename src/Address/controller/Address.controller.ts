@@ -10,7 +10,7 @@ export default class AdressControler {
     //Post
     public async createAddress(req: Request, res: Response) {
         try {
-            const filterData = addressConfig.queryBody(req, res);
+            const filterData = addressConfig.queryBody(req);
             const check = addressConfig.checkServiceOrder(filterData)
             if (check === true) {
                 await addressConfig.saveAddress(filterData)

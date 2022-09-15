@@ -44,9 +44,18 @@ export default class AddressConfig {
         })
     }
 
-    public queryBody(req: Request, res: Response) {
+    public queryBody(req: Request) {
         console.log("body:", req.body)
-        const { serviceId, destinationPoint: { zipCode, latitude, longitude, customer: {email}}} = req.body
+        const { serviceId, 
+            destinationPoint: { 
+                zipCode, 
+                latitude, 
+                longitude, 
+            },
+            customer: {
+                email
+            }
+        } = req.body
         const filterData = { serviceId, zipCode, latitude, longitude, email }
         console.log("dados query:", filterData)
         return filterData;
